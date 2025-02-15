@@ -14,14 +14,13 @@
 To use **abhash** in your project, initialize your module and add the dependency:
 
 ```bash
-go mod init github.com/yaroslavofeccy/abhash
 go get github.com/yaroslavofeccy/abhash
 ```
 Usage
 Import the module in your Go code:
 
 ```go
-import "github.com/yourusername/abhash"
+import "github.com/yaroslavofeccy/abhash"
 ```
 
 Here’s a quick example to demonstrate its usage:
