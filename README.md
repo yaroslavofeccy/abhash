@@ -14,7 +14,6 @@
 To use **abhash** in your project, initialize your module and add the dependency:
 
 ```bash
-go mod init github.com/yaroslavofeccy/abhash
 go get github.com/yaroslavofeccy/abhash
 ```
 Usage
