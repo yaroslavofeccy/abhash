@@ -2,6 +2,7 @@ package abhash
 
 import (
 	"bytes"
+	"reflect"
 	"testing"
 )
 
@@ -61,5 +62,28 @@ func TestABHashShortData(t *testing.T) {
 	expectedLen := hpa * sohp
 	if len(hash) != expectedLen {
 		t.Errorf("Expected hash length %d, got %d", expectedLen, len(hash))
+	}
+}
+
+func TestCheckSimilarityIdenticalHashes(t *testing.T) {
+	hash1 := []byte{0x01, 0x02, 0x03, 0x04}
+	hash2 := []byte{0x01, 0x02, 0x03, 0x04}
+
+	result := checkSimilarity(hash1, hash2)
+
+	if len(result) != 0 {
+		t.Errorf("Expected no bandit bits for identical hashes, got %d bandit bits", len(result))
+	}
+}
+
+func TestCheckSimilarityDifferentHashes(t *testing.T) {
+	hash1 := []byte{0x00, 0x11, 0x22, 0x33}
+	hash2 := []byte{0xFF, 0xEE, 0xDD, 0xCC}
+
+	banditBits := checkSimilarity(hash1, hash2)
+
+	expectedBanditBits := []int{0, 1, 2, 3}
+	if !reflect.DeepEqual(banditBits, expectedBanditBits) {
+		t.Errorf("Expected bandit bits %v, got %v", expectedBanditBits, banditBits)
 	}
 }
