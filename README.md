@@ -22,9 +22,9 @@ Import the module in your Go code:
 
 ```go
 import "github.com/yourusername/abhash"
-Here’s a quick example to demonstrate its usage:
 ```
 
+Here’s a quick example to demonstrate its usage:
 ```go
 package main
 
@@ -61,3 +61,18 @@ XOR Folding: Each byte of the segment contributes to the token via XOR folding.
 Bitwise Inversion: Each resulting byte in the token is then inverted using the bitwise NOT operator (^).
 Hash Assembly:
 The final hash is constructed by concatenating the tokens of all segments in their original order
+
+## Testing
+To run tests for abhash, use the following command from the module's root directory:
+
+```bash
+go test ./...
+```
+
+The tests verify that:
+- The hash function is consistent for identical inputs.
+- Changes in one part of the data affect only the corresponding token.
+- The function properly handles input data shorter than the expected length.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
