@@ -20,7 +20,7 @@ Usage
 Import the module in your Go code:
 
 ```go
-import "github.com/yourusername/abhash"
+import "github.com/yaroslavofeccy/abhash"
 ```
 
 Here’s a quick example to demonstrate its usage:
