@@ -109,3 +109,19 @@ func generateToken(part []byte, size int) []byte {
 
 	return token
 }
+
+// checkSimilarity checks for bandit bits (different bits) in both hashes and returns their positions
+func checkSimilarity(hash1, hash2 []byte) []int {
+	var banditsbits []int
+
+	// Find the bandit bits (different bits) in both hashes and store their positions
+	for i, h1 := range hash1 {
+		for j, h2 := range hash2 {
+			if h1 != h2 && i == j {
+				banditsbits = append(banditsbits, i)
+			}
+		}
+	}
+
+	return banditsbits
+}
