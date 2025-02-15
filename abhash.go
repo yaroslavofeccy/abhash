@@ -26,6 +26,13 @@ func ABHash(data []byte, sohp int, hpa int) []byte {
 	for i := 0; i < hpa-1; i++ {
 		start := i * sohp
 		end := start + sohp
+
+		// Если начало выходит за границы data, то ограничиваем его до длины data
+		if start > len(data) {
+			start = len(data)
+		}
+
+		// Если конец выходит за границы data, то ограничиваем его до длины data
 		if end > len(data) { // если данных меньше, чем требуется для очередной части
 			end = len(data)
 		}
