@@ -56,6 +56,7 @@ func ABHash(data []byte, sohp int, hpa int) []byte {
 	// 🔄 Assemble the final hash by concatenating tokens in the same order as data parts
 	result := make([]byte, 0, hpa*sohp)
 	for _, token := range tokens {
+  token = append(token, byte('-'))
 		result = append(result, token...)
 	}
 
